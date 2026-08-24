@@ -37,12 +37,29 @@ Use a paired iPhone and Apple Watch. These checks cannot be completed in this Li
 
 ## Quick launch
 
-1. Complication: opens the template chooser; does not auto-start. After installing a
-   new build, remove the complication from the watch face and add it again so watchOS
-   reloads its artwork. A grey exclamation placeholder means the widget extension did
-   not load, not that the glyph is wrong.
+1. Complication: opens the template chooser; does not auto-start.
 2. Siri / Shortcuts: “Choose a visit in Move Forward” opens the chooser.
 3. Action Button on compatible watches: assign the shortcut and confirm it opens the chooser.
+
+## When the complication will not draw
+
+watchOS caches complications aggressively, and a widget extension that failed once
+keeps showing a placeholder even after the cause is fixed. A grey exclamation shield
+or an empty grey box means the extension did not render; it does not mean the artwork
+is wrong.
+
+The face preview inside the Watch app on iPhone can show the complication correctly
+while the watch itself shows a placeholder. That combination points at the extension
+on the watch, not at the drawing code.
+
+Work through these in order, checking the face after each one:
+
+1. Remove the complication from the face and add it again.
+2. Restart the Apple Watch. This is what usually clears a stuck extension.
+3. On iPhone open Watch → Move Forward, turn off Show App on Apple Watch, wait for it
+   to uninstall, then turn it back on. That forces a clean install of the extension.
+4. With the watch connected, open Console.app on the Mac, filter on `MoveForwardWatchWidgets`,
+   and watch for a crash as the face loads.
 
 ## Displays
 
