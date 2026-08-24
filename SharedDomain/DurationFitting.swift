@@ -1,6 +1,6 @@
 import Foundation
 
-enum FitError: Equatable, Sendable {
+enum FitError: Error, Equatable, Sendable {
     case noComponents
     case totalTooSmall(minimumSeconds: Int)
     case invalidTotal
