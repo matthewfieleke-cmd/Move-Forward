@@ -21,6 +21,12 @@ final class SessionNotificationController {
         lastScheduledIdentifiers[sessionID] = []
     }
 
+    /// Clears alerts this app already delivered, including ones left by sessions this
+    /// launch knows nothing about, so Notification Center never accumulates a day of them.
+    func sweepDeliveredAlerts() async {
+        await scheduler.removeDelivered(matchingPrefix: NotificationPlanner.identifierPrefix)
+    }
+
     func reschedule(session: VisitSession, now: Date) async -> [PlannedAlert] {
         await cancel(sessionID: session.id, knownIdentifiers: session.notificationIdentifiers)
         let alerts = NotificationPlanner.futureAlerts(for: session, now: now)

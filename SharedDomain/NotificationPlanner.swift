@@ -12,12 +12,16 @@ struct PlannedAlert: Equatable, Sendable, Identifiable {
 }
 
 enum NotificationPlanner {
+    /// Every alert this app schedules carries this prefix so stale ones can be swept
+    /// even when the session that created them is long gone.
+    static let identifierPrefix = "mf."
+
     static func componentIdentifier(sessionID: UUID, componentID: UUID) -> String {
-        "mf.\(sessionID.uuidString).c.\(componentID.uuidString)"
+        "\(identifierPrefix)\(sessionID.uuidString).c.\(componentID.uuidString)"
     }
 
     static func completionIdentifier(sessionID: UUID) -> String {
-        "mf.\(sessionID.uuidString).complete"
+        "\(identifierPrefix)\(sessionID.uuidString).complete"
     }
 
     static func allIdentifiers(for sessionID: UUID, template: VisitTemplate) -> [String] {
@@ -29,7 +33,7 @@ enum NotificationPlanner {
     }
 
     static func prefix(for sessionID: UUID) -> String {
-        "mf.\(sessionID.uuidString)."
+        "\(identifierPrefix)\(sessionID.uuidString)."
     }
 
     static func futureAlerts(

@@ -240,6 +240,31 @@ final class MoveForwardTests: XCTestCase {
         XCTAssertTrue(pendingAfterCancel.isEmpty)
     }
 
+    @MainActor
+    func testSweepClearsDeliveredAlertsFromForgottenSessions() async {
+        let scheduler = MockNotificationScheduler()
+        let controller = SessionNotificationController(scheduler: scheduler, schedulesSystemNotifications: true)
+        let older = SessionEngine.start(template: StarterTemplates.moveForward, at: start, origin: .watch)
+        let newer = SessionEngine.start(template: StarterTemplates.acuteVisit, at: start, origin: .watch)
+        scheduler.delivered = [
+            NotificationPlanner.completionIdentifier(sessionID: older.id),
+            NotificationPlanner.completionIdentifier(sessionID: newer.id),
+            "unrelated.notification"
+        ]
+
+        await controller.sweepDeliveredAlerts()
+
+        XCTAssertEqual(scheduler.delivered, ["unrelated.notification"])
+    }
+
+    func testEveryScheduledIdentifierCarriesTheSweepPrefix() {
+        let session = SessionEngine.start(template: StarterTemplates.moveForward, at: start, origin: .watch)
+        let alerts = NotificationPlanner.futureAlerts(for: session, now: start)
+        XCTAssertFalse(alerts.isEmpty)
+        XCTAssertTrue(alerts.allSatisfy { $0.identifier.hasPrefix(NotificationPlanner.identifierPrefix) })
+        XCTAssertTrue(session.notificationIdentifiers.allSatisfy { $0.hasPrefix(NotificationPlanner.identifierPrefix) })
+    }
+
     func testFavoritesAndTemplateChangesPersist() throws {
         let url = FileManager.default.temporaryDirectory.appendingPathComponent("mf-\(UUID().uuidString).json")
         defer { try? FileManager.default.removeItem(at: url) }

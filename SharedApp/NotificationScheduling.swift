@@ -7,6 +7,7 @@ protocol NotificationScheduling: AnyObject {
     func add(alerts: [PlannedAlert]) async
     func remove(identifiers: [String])
     func removeDelivered(identifiers: [String])
+    func removeDelivered(matchingPrefix prefix: String) async
     func authorizationStatus() async -> UNAuthorizationStatus
 }
 
@@ -58,6 +59,13 @@ final class UserNotificationScheduler: NSObject, NotificationScheduling, UNUserN
         UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: identifiers)
     }
 
+    func removeDelivered(matchingPrefix prefix: String) async {
+        let delivered = await UNUserNotificationCenter.current().deliveredNotifications()
+        let identifiers = delivered.map(\.request.identifier).filter { $0.hasPrefix(prefix) }
+        guard !identifiers.isEmpty else { return }
+        UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: identifiers)
+    }
+
     func authorizationStatus() async -> UNAuthorizationStatus {
         await UNUserNotificationCenter.current().notificationSettings().authorizationStatus
     }
@@ -90,6 +98,10 @@ final class MockNotificationScheduler: NotificationScheduling {
 
     func removeDelivered(identifiers: [String]) {
         delivered.removeAll { identifiers.contains($0) }
+    }
+
+    func removeDelivered(matchingPrefix prefix: String) async {
+        delivered.removeAll { $0.hasPrefix(prefix) }
     }
 
     func authorizationStatus() async -> UNAuthorizationStatus {

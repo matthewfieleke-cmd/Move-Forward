@@ -93,6 +93,9 @@ final class AppStore: ObservableObject {
         _ = await notifications.scheduler.requestAuthorization()
         await refreshNotificationStatus()
         await reconcileSession()
+        if session?.state != .active {
+            await notifications.sweepDeliveredAlerts()
+        }
         if localDevice == .watch, let session, session.state == .active {
             _ = await notifications.reschedule(session: session, now: now)
         }
@@ -178,6 +181,8 @@ final class AppStore: ObservableObject {
             guard replacingExisting else { return }
             await endVisit(countAsCompleted: false, sync: false)
         }
+        // A new visit starts from a clean wrist: nothing older is left sitting around.
+        await notifications.sweepDeliveredAlerts()
         let started = SessionEngine.start(template: template, at: clock.now(), origin: localDevice)
         session = started
         persist()
@@ -501,7 +506,7 @@ final class AppStore: ObservableObject {
         #endif
         guard notifications.schedulesSystemNotifications else { return }
         let alert = PlannedAlert(
-            identifier: "mf.test.\(UUID().uuidString)",
+            identifier: "\(NotificationPlanner.identifierPrefix)test.\(UUID().uuidString)",
             fireDate: clock.now().addingTimeInterval(2),
             title: "Move Forward",
             body: "Test wrist cue. Silent Mode plus haptics keeps this quiet.",
