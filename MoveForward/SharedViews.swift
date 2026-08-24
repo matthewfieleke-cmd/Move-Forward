@@ -25,9 +25,10 @@ struct TemplateRow: View {
                     MiniTimeline(template: template)
                 }
                 if let exit = template.roomExitComponent {
-                    Label("EXIT ROOM · \(exit.title)", systemImage: "door.left.hand.open")
+                    Label(exit.title, systemImage: "door.left.hand.open")
                         .font(.caption.weight(.semibold))
                         .foregroundStyle(Palette.amber)
+                        .lineLimit(2)
                         .accessibilityLabel("Room-exit milestone: \(exit.title)")
                 }
             }
@@ -50,24 +51,33 @@ struct TemplateRow: View {
     }
 }
 
+/// Drawn in a single Canvas pass. Nested GeometryReaders in a scrolling list
+/// re-measure constantly and made the timers list stutter.
 struct MiniTimeline: View {
     let template: VisitTemplate
+    var height: CGFloat = 8
 
     var body: some View {
-        let timeline = TemplateTimeline.build(from: template)
-        GeometryReader { geo in
-            let total = CGFloat(max(timeline.steps.map(\.durationSeconds).reduce(0, +), 1))
-            let spacing = CGFloat(3 * max(timeline.steps.count - 1, 0))
-            HStack(spacing: 3) {
-                ForEach(timeline.steps) { step in
-                    Capsule()
-                        .fill(step.isRoomExit ? Palette.amber : template.accent.color.opacity(0.55))
-                        .frame(width: max(4, (geo.size.width - spacing) * CGFloat(step.durationSeconds) / total), height: 7)
-                        .accessibilityLabel(step.isRoomExit ? "Exit room: \(step.title)" : step.title)
-                }
+        let steps = TemplateTimeline.build(from: template).steps
+        let total = CGFloat(max(steps.reduce(0) { $0 + $1.durationSeconds }, 1))
+        let accent = template.accent.color.opacity(0.55)
+        Canvas(opaque: false, rendersAsynchronously: false) { context, size in
+            let gap: CGFloat = 3
+            let usable = max(size.width - gap * CGFloat(max(steps.count - 1, 0)), 1)
+            var x: CGFloat = 0
+            for step in steps {
+                let width = max(3, usable * CGFloat(step.durationSeconds) / total)
+                let rect = CGRect(x: x, y: 0, width: width, height: size.height)
+                context.fill(
+                    Path(roundedRect: rect, cornerRadius: size.height / 2),
+                    with: .color(step.isRoomExit ? Palette.amber : accent)
+                )
+                x += width + gap
             }
         }
-        .frame(height: 8)
+        .frame(height: height)
+        .accessibilityElement()
+        .accessibilityLabel("Timeline of \(steps.count) components")
     }
 }
 
@@ -110,18 +120,24 @@ struct WatchStatusBanner: View {
     var body: some View {
         HStack(alignment: .top, spacing: 10) {
             Image(systemName: status.isReady ? "applewatch" : "applewatch.slash")
-                .foregroundStyle(status.isReady ? Palette.teal : Palette.inkMuted)
-            VStack(alignment: .leading, spacing: 2) {
-                Text(status.title)
+                .font(.subheadline)
+                .foregroundStyle(status.isReady ? Palette.teal : Palette.amber)
+            VStack(alignment: .leading, spacing: 3) {
+                Text("Sync status: \(status.title)")
                     .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(Palette.ink)
                 Text(status.detail)
                     .font(.caption)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Palette.inkMuted)
             }
             Spacer(minLength: 0)
         }
         .padding(12)
-        .background(Palette.cream, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .background(Palette.cardLight, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .strokeBorder(Palette.amber.opacity(status.isReady ? 0 : 0.35), lineWidth: 1)
+        )
         .accessibilityElement(children: .combine)
     }
 }
@@ -131,6 +147,6 @@ struct CardBackground: ViewModifier {
         content
             .padding(18)
             .background(Palette.cardLight, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
-            .shadow(color: Palette.ink.opacity(0.06), radius: 12, y: 6)
+            .shadow(color: Palette.ink.opacity(0.05), radius: 5, y: 2)
     }
 }

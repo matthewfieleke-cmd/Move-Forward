@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(UIKit)
+import UIKit
+#endif
 
 struct SettingsView: View {
     @EnvironmentObject private var store: AppStore
@@ -28,9 +31,28 @@ struct SettingsView: View {
                     Button("Send test watch alert") {
                         store.sendTestWatchAlert()
                     }
-                    Button("Enable notifications") {
-                        Task { await store.requestNotificationPermission() }
+                    if let result = store.testAlertStatus {
+                        Text(result)
+                            .font(.footnote)
+                            .foregroundStyle(store.watchStatus.isReady ? Palette.tealDeep : Palette.amber)
                     }
+                    if store.notificationsNeedSystemSettings {
+                        Button("Open notification settings") { openSystemSettings() }
+                    } else {
+                        Button("Allow notifications") {
+                            Task { await store.requestNotificationPermission() }
+                        }
+                    }
+                    Text("Apple Watch has its own switch. On iPhone open Watch → Notifications → Move Forward and choose Custom → Allow Notifications.")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                }
+
+                Section("iPhone Live Activity") {
+                    Toggle("Show Live Activity", isOn: liveActivityBinding)
+                    Text("Adds the visit to the iPhone Lock Screen and Dynamic Island. Apple Watch also mirrors it as a card with an Open on iPhone button, which is why this is off by default. Your watch app and its wrist taps work either way.")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
                 }
 
                 Section("Appearance") {
@@ -74,6 +96,20 @@ struct SettingsView: View {
                 Text("Templates, visit history, and the current timer will be cleared from this device.")
             }
         }
+    }
+
+    private func openSystemSettings() {
+        #if canImport(UIKit)
+        guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+        UIApplication.shared.open(url)
+        #endif
+    }
+
+    private var liveActivityBinding: Binding<Bool> {
+        Binding(
+            get: { store.settings.livesActivityEnabled },
+            set: { store.setShowsLiveActivity($0) }
+        )
     }
 
     private var appearanceBinding: Binding<AppearancePreference> {

@@ -11,7 +11,9 @@ protocol NotificationScheduling: AnyObject {
 }
 
 final class UserNotificationScheduler: NSObject, NotificationScheduling, UNUserNotificationCenterDelegate {
-    var presentsInForeground = false
+    /// The app plays its own haptic and updates the UI while it is on screen, so the
+    /// duplicate system banner is suppressed only in that case.
+    var suppressesForegroundAlerts = false
 
     override init() {
         super.init()
@@ -20,7 +22,7 @@ final class UserNotificationScheduler: NSObject, NotificationScheduling, UNUserN
 
     func requestAuthorization() async -> Bool {
         do {
-            return try await UNUserNotificationCenter.current().requestAuthorization(options: [.alert])
+            return try await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound])
         } catch {
             return false
         }
@@ -36,7 +38,9 @@ final class UserNotificationScheduler: NSObject, NotificationScheduling, UNUserN
             let content = UNMutableNotificationContent()
             content.title = alert.title
             content.body = alert.body
-            content.sound = nil
+            // Apple Watch pairs its notification haptic with the standard alert sound.
+            // Silent Mode keeps the wrist tap without audio.
+            content.sound = .default
             content.interruptionLevel = .active
             content.threadIdentifier = "move-forward-visit"
             let components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: alert.fireDate)
@@ -62,7 +66,7 @@ final class UserNotificationScheduler: NSObject, NotificationScheduling, UNUserN
         _ center: UNUserNotificationCenter,
         willPresent notification: UNNotification
     ) async -> UNNotificationPresentationOptions {
-        presentsInForeground ? [] : [.banner, .list]
+        suppressesForegroundAlerts ? [] : [.banner, .list, .sound]
     }
 }
 

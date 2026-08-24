@@ -10,7 +10,9 @@ struct MoveForwardWatchApp: App {
         let persistence = PersistenceStore(fileURL: PersistenceStore.defaultURL())
         let scheduler = UserNotificationScheduler()
         UNUserNotificationCenter.current().delegate = scheduler
-        scheduler.presentsInForeground = false
+        // The watch app launches on screen, where it plays its own transition haptic.
+        // scenePhase keeps this in sync afterwards.
+        scheduler.suppressesForegroundAlerts = true
         let notifications = SessionNotificationController(
             scheduler: scheduler,
             schedulesSystemNotifications: true
@@ -34,7 +36,7 @@ struct MoveForwardWatchApp: App {
                 }
         }
         .onChange(of: scenePhase) { _, phase in
-            store.setPresentsNotificationsInForeground(phase == .active)
+            store.setSuppressesForegroundAlerts(phase == .active)
             if phase == .active {
                 Task { await store.reconcileSession() }
                 if ChooserLaunch.consume() {

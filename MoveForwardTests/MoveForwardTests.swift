@@ -282,6 +282,27 @@ final class MoveForwardTests: XCTestCase {
         XCTAssertTrue(TemplateValidation.validate(updated).isLaunchable)
     }
 
+    func testSettingsFromEarlierBuildsStillDecode() throws {
+        let legacy = """
+        {"appearance":"system","hasCompletedOnboarding":true}
+        """
+        let settings = try JSONDecoder().decode(AppSettings.self, from: Data(legacy.utf8))
+        XCTAssertTrue(settings.hasCompletedOnboarding)
+        XCTAssertFalse(settings.livesActivityEnabled)
+    }
+
+    func testLiveActivityStaysOffUntilEnabled() {
+        XCTAssertFalse(AppSettings.default.livesActivityEnabled)
+        var settings = AppSettings.default
+        settings.showsLiveActivity = true
+        XCTAssertTrue(settings.livesActivityEnabled)
+    }
+
+    func testFitErrorIsAnError() {
+        let error: Error = FitError.noComponents
+        XCTAssertTrue(error is FitError)
+    }
+
     func testPostRoomProjectionAfterExitBegins() {
         let session = SessionEngine.start(template: StarterTemplates.moveForward, at: start, origin: .phone)
         let duringExit = SessionEngine.projection(session: session, now: start.addingTimeInterval(11 * 60 + 10))

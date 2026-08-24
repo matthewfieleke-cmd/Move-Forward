@@ -226,13 +226,18 @@ struct AppSettings: Codable, Equatable, Sendable {
     var lastWatchAckAt: Date?
     var lastWatchAckSessionID: UUID?
     var lastWatchScheduledCount: Int?
+    /// Optional so state saved by earlier builds still decodes.
+    var showsLiveActivity: Bool?
+
+    var livesActivityEnabled: Bool { showsLiveActivity ?? false }
 
     static let `default` = AppSettings(
         hasCompletedOnboarding: false,
         appearance: .system,
         lastWatchAckAt: nil,
         lastWatchAckSessionID: nil,
-        lastWatchScheduledCount: nil
+        lastWatchScheduledCount: nil,
+        showsLiveActivity: false
     )
 }
 

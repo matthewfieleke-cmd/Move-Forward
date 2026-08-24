@@ -6,11 +6,23 @@ struct TimersView: View {
     @State private var creatingNew = false
     @State private var templatePendingStart: VisitTemplate?
 
+    private var favorites: [VisitTemplate] {
+        store.sortedTemplates.filter(\.isFavorite)
+    }
+
+    private var others: [VisitTemplate] {
+        store.sortedTemplates.filter { !$0.isFavorite }
+    }
+
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
-                    header
+                LazyVStack(alignment: .leading, spacing: 16) {
+                    Text("Set the sequence. Start. Keep moving through the room and after.")
+                        .font(.subheadline)
+                        .foregroundStyle(Palette.inkMuted)
+                        .padding(.bottom, 2)
+
                     if let projection = store.currentProjection, store.activeSession != nil {
                         NavigationLink {
                             ActiveSessionView()
@@ -19,24 +31,31 @@ struct TimersView: View {
                         }
                         .buttonStyle(.plain)
                     }
-                    WatchStatusBanner(status: store.watchStatus)
-                    if !store.sortedTemplates.filter(\.isFavorite).isEmpty {
-                        Text("Favorites")
-                            .font(.title3.weight(.semibold))
-                            .foregroundStyle(Palette.ink)
-                        ForEach(store.sortedTemplates.filter(\.isFavorite)) { template in
+
+                    if !store.watchStatus.isReady {
+                        WatchStatusBanner(status: store.watchStatus)
+                    }
+
+                    if !favorites.isEmpty {
+                        sectionHeader("Favorites")
+                        ForEach(favorites) { template in
                             templateCard(template)
                         }
                     }
-                    Text("All templates")
-                        .font(.title3.weight(.semibold))
-                        .foregroundStyle(Palette.ink)
-                    ForEach(store.sortedTemplates) { template in
-                        templateCard(template)
+
+                    if !others.isEmpty {
+                        sectionHeader(favorites.isEmpty ? "Templates" : "More templates")
+                        ForEach(others) { template in
+                            templateCard(template)
+                        }
                     }
+
+                    Color.clear.frame(height: 28)
                 }
-                .padding(20)
+                .padding(.horizontal, 20)
+                .padding(.top, 8)
             }
+            .scrollIndicators(.hidden)
             .background(Palette.cream.ignoresSafeArea())
             .navigationTitle("Move Forward")
             .toolbar {
@@ -93,24 +112,20 @@ struct TimersView: View {
         }
     }
 
+    private func sectionHeader(_ title: String) -> some View {
+        Text(title)
+            .font(.headline)
+            .foregroundStyle(Palette.ink)
+            .padding(.top, 4)
+            .accessibilityAddTraits(.isHeader)
+    }
+
     private func start(_ template: VisitTemplate) {
         if store.activeSession != nil {
             templatePendingStart = template
         } else {
             Task { await store.startVisit(template) }
         }
-    }
-
-    private var header: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            Text("Visit timers")
-                .font(.largeTitle.weight(.bold))
-                .foregroundStyle(Palette.ink)
-            Text("Set the sequence. Start. Keep moving through the room and after.")
-                .font(.body)
-                .foregroundStyle(Palette.inkMuted)
-        }
-        .accessibilityElement(children: .combine)
     }
 
     private func templateCard(_ template: VisitTemplate) -> some View {

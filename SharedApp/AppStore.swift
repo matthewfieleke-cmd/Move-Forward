@@ -16,6 +16,8 @@ final class AppStore: ObservableObject {
     @Published var showChooser = false
     @Published var lastErrorMessage: String?
     @Published var notificationStatus: String = "Unknown"
+    @Published var notificationsNeedSystemSettings = false
+    @Published var testAlertStatus: String?
 
     let localDevice: DeviceOrigin
     let persistence: PersistenceStore
@@ -49,7 +51,7 @@ final class AppStore: ObservableObject {
 
         connectivity.delegate = self
         connectivity.activate(localDevice: localDevice)
-        startClock()
+        updateClockSubscription()
         NotificationCenter.default.addObserver(forName: ChooserLaunch.notification, object: nil, queue: .main) { [weak self] _ in
             Task { @MainActor in
                 self?.showChooser = true
@@ -180,8 +182,9 @@ final class AppStore: ObservableObject {
         session = started
         persist()
         await notifications.reschedule(session: started, now: clock.now())
-        liveActivity.start(session: started, now: clock.now())
+        startLiveActivityIfEnabled(started)
         playStartHaptic()
+        updateClockSubscription()
         if localDevice == .phone {
             connectivity.markPendingAck()
         }
@@ -219,6 +222,7 @@ final class AppStore: ObservableObject {
         liveActivity.end(sessionID: session.id)
         self.session = session
         persist()
+        updateClockSubscription()
         if sync {
             pushEnvelope(
                 SyncEnvelope.make(
@@ -242,8 +246,10 @@ final class AppStore: ObservableObject {
         self.session = pair.started
         persist()
         await notifications.reschedule(session: pair.started, now: clock.now())
-        liveActivity.start(session: pair.started, now: clock.now())
+        startLiveActivityIfEnabled(pair.started)
         playStartHaptic()
+        now = clock.now()
+        updateClockSubscription()
         pushEnvelope(
             SyncEnvelope.make(
                 kind: .sessionRestart,
@@ -254,6 +260,15 @@ final class AppStore: ObservableObject {
             ),
             preferImmediate: true
         )
+    }
+
+    /// Clears a finished session from this device so the UI returns to the template list.
+    /// Active sessions are never cleared this way.
+    func dismissFinishedSession() {
+        guard let finished = session, finished.state != .active else { return }
+        session = nil
+        persist()
+        updateClockSubscription()
     }
 
     func restoreStarterTemplates() {
@@ -279,6 +294,7 @@ final class AppStore: ObservableObject {
         settings.hasCompletedOnboarding = true
         templatesRevision += 1
         persist()
+        updateClockSubscription()
         pushFullState(preferImmediate: true)
     }
 
@@ -287,7 +303,25 @@ final class AppStore: ObservableObject {
         persist()
     }
 
+    func setShowsLiveActivity(_ value: Bool) {
+        settings.showsLiveActivity = value
+        persist()
+        guard let session else { return }
+        if value {
+            startLiveActivityIfEnabled(session)
+        } else {
+            liveActivity.end(sessionID: session.id)
+        }
+    }
+
     func sendTestWatchAlert() {
+        guard localDevice == .phone else {
+            Task { await presentTestAlert() }
+            return
+        }
+        testAlertStatus = watchStatus.isReady
+            ? "Sent. Your Apple Watch should tap in a moment."
+            : "Apple Watch is not reachable. Open Move Forward on the watch, then send again."
         pushEnvelope(
             SyncEnvelope.make(kind: .testAlert, origin: localDevice, at: clock.now()),
             preferImmediate: true
@@ -302,14 +336,18 @@ final class AppStore: ObservableObject {
         }
     }
 
-    func setPresentsNotificationsInForeground(_ value: Bool) {
+    func setSuppressesForegroundAlerts(_ value: Bool) {
         if let scheduler = notifications.scheduler as? UserNotificationScheduler {
-            scheduler.presentsInForeground = value
+            scheduler.suppressesForegroundAlerts = value
         }
     }
 
     func reconcileSession() async {
-        guard let session else { return }
+        now = clock.now()
+        guard let session else {
+            updateClockSubscription()
+            return
+        }
         let result = SessionEngine.reconcile(
             session: session,
             now: clock.now(),
@@ -336,9 +374,10 @@ final class AppStore: ObservableObject {
                 persist()
             }
         }
-        if result.session.state == .active {
+        if result.session.state == .active, settings.livesActivityEnabled {
             liveActivity.update(session: result.session, now: clock.now())
         }
+        updateClockSubscription()
     }
 
     func refreshNotificationStatus() async {
@@ -353,6 +392,7 @@ final class AppStore: ObservableObject {
         @unknown default:
             notificationStatus = "Unknown"
         }
+        notificationsNeedSystemSettings = status != .notDetermined
     }
 
     private func persist() {
@@ -427,9 +467,10 @@ final class AppStore: ObservableObject {
         settings = result.snapshot.settings
         templatesRevision = result.snapshot.templatesRevision
         persist()
+        updateClockSubscription()
         if result.shouldReschedule, let session, session.state == .active {
             _ = await notifications.reschedule(session: session, now: clock.now())
-            liveActivity.start(session: session, now: clock.now())
+            startLiveActivityIfEnabled(session)
             if localDevice == .watch {
                 let scheduled = NotificationPlanner.futureAlerts(for: session, now: clock.now()).count
                 pushEnvelope(
@@ -454,18 +495,16 @@ final class AppStore: ObservableObject {
         #if os(watchOS)
         WKInterfaceDevice.current().play(.notification)
         #endif
-        let fireDate = clock.now().addingTimeInterval(1)
+        guard notifications.schedulesSystemNotifications else { return }
         let alert = PlannedAlert(
             identifier: "mf.test.\(UUID().uuidString)",
-            fireDate: fireDate,
+            fireDate: clock.now().addingTimeInterval(2),
             title: "Move Forward",
             body: "Test wrist cue. Silent Mode plus haptics keeps this quiet.",
             isCompletion: false,
             componentID: nil
         )
-        if notifications.schedulesSystemNotifications {
-            await notifications.scheduler.add(alerts: [alert])
-        }
+        await notifications.scheduler.add(alerts: [alert])
     }
 
     private func playStartHaptic() {
@@ -474,18 +513,28 @@ final class AppStore: ObservableObject {
         #endif
     }
 
-    private func startClock() {
-        timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true) { [weak self] _ in
+    private func startLiveActivityIfEnabled(_ session: VisitSession) {
+        guard settings.livesActivityEnabled else { return }
+        liveActivity.start(session: session, now: clock.now())
+    }
+
+    /// The clock only ticks while a visit is running. Without this every screen would
+    /// redraw continuously, which made scrolling stutter.
+    private func updateClockSubscription() {
+        guard session?.state == .active else {
+            timer?.invalidate()
+            timer = nil
+            return
+        }
+        guard timer == nil else { return }
+        let ticker = Timer(timeInterval: 1, repeats: true) { [weak self] _ in
             Task { @MainActor in
                 guard let self else { return }
-                self.now = self.clock.now()
                 await self.reconcileSession()
             }
         }
-        if let timer {
-            RunLoop.main.add(timer, forMode: .common)
-        }
+        RunLoop.main.add(ticker, forMode: .common)
+        timer = ticker
     }
 }
 
