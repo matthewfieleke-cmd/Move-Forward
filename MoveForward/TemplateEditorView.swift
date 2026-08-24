@@ -257,7 +257,7 @@ private struct ComponentEditorRow: View {
                 .accessibilityLabel(isRoomExit ? "Room-exit milestone. Tap to remove." : "Mark as room-exit milestone")
             }
             if isRoomExit {
-                Label("After this step, the visit continues outside the room.", systemImage: "door.left.hand.open")
+                Label("Leave the room now.", systemImage: "door.left.hand.open")
                     .font(.caption)
                     .foregroundStyle(Palette.amber)
             }
