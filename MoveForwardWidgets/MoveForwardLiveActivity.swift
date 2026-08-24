@@ -22,7 +22,7 @@ struct MoveForwardLiveActivity: Widget {
                         .font(.caption.weight(.semibold))
                 }
                 DynamicIslandExpandedRegion(.trailing) {
-                    Text(timer(context.state.visitEndDate))
+                    timer(context.state.visitEndDate)
                         .font(.countdown(16, weight: .semibold))
                         .monospacedDigit()
                 }
@@ -40,7 +40,7 @@ struct MoveForwardLiveActivity: Widget {
                 Image(systemName: context.state.isRoomExit ? "door.left.hand.open" : "timer")
                     .foregroundStyle(context.state.isRoomExit ? Palette.amber : Palette.teal)
             } compactTrailing: {
-                Text(timer(context.state.visitEndDate))
+                timer(context.state.visitEndDate)
                     .monospacedDigit()
                     .foregroundStyle(context.state.isRoomExit ? Palette.amber : .primary)
             } minimal: {
@@ -60,12 +60,15 @@ struct MoveForwardLiveActivity: Widget {
                 .foregroundStyle(context.state.isRoomExit ? Palette.amber : Palette.ink)
                 .lineLimit(3)
             HStack {
-                Text(timer(context.state.componentEndDate))
+                timer(context.state.componentEndDate)
                     .font(.countdown(28, weight: .semibold))
                 Spacer()
-                Text("Visit \(timer(context.state.visitEndDate))")
-                    .font(.countdown(16))
-                    .foregroundStyle(.secondary)
+                HStack(spacing: 4) {
+                    Text("Visit")
+                    timer(context.state.visitEndDate)
+                }
+                .font(.countdown(16))
+                .foregroundStyle(.secondary)
             }
             ProgressView(value: progress(context.state))
                 .tint(context.state.isRoomExit ? Palette.amber : Palette.teal)
@@ -86,6 +89,6 @@ struct MoveForwardLiveActivity: Widget {
         let total = state.visitEndDate.timeIntervalSince(state.componentStartDate)
         guard total > 0 else { return 0 }
         let elapsed = Date().timeIntervalSince(state.componentStartDate)
-        return min(1, max(0, elapsed / max(state.visitEndDate.timeIntervalSince(state.componentStartDate), 0.001)))
+        return min(1, max(0, elapsed / max(total, 0.001)))
     }
 }
