@@ -16,8 +16,14 @@ enum NotificationPlanner {
     /// even when the session that created them is long gone.
     static let identifierPrefix = "mf."
 
-    static func componentIdentifier(sessionID: UUID, componentID: UUID) -> String {
-        "\(identifierPrefix)\(sessionID.uuidString).c.\(componentID.uuidString)"
+    /// The room-exit checkpoint fires twice so it is unmistakable on the wrist without
+    /// looking at the watch. One second is the closest two calendar triggers can sit,
+    /// since they only resolve to whole seconds.
+    static let roomExitRepeatDelay: TimeInterval = 1
+
+    static func componentIdentifier(sessionID: UUID, componentID: UUID, repeatIndex: Int = 0) -> String {
+        let base = "\(identifierPrefix)\(sessionID.uuidString).c.\(componentID.uuidString)"
+        return repeatIndex == 0 ? base : "\(base).r\(repeatIndex)"
     }
 
     static func completionIdentifier(sessionID: UUID) -> String {
@@ -25,8 +31,14 @@ enum NotificationPlanner {
     }
 
     static func allIdentifiers(for sessionID: UUID, template: VisitTemplate) -> [String] {
-        var identifiers = template.components.dropFirst().map {
-            componentIdentifier(sessionID: sessionID, componentID: $0.id)
+        var identifiers: [String] = []
+        for component in template.components.dropFirst() {
+            identifiers.append(componentIdentifier(sessionID: sessionID, componentID: component.id))
+            if component.id == template.roomExitComponentID {
+                identifiers.append(
+                    componentIdentifier(sessionID: sessionID, componentID: component.id, repeatIndex: 1)
+                )
+            }
         }
         identifiers.append(completionIdentifier(sessionID: sessionID))
         return identifiers
@@ -52,6 +64,21 @@ enum NotificationPlanner {
                 PlannedAlert(
                     identifier: componentIdentifier(sessionID: session.id, componentID: step.componentID),
                     fireDate: fireDate,
+                    title: step.title,
+                    body: session.templateSnapshot.name,
+                    isCompletion: false,
+                    componentID: step.componentID
+                )
+            )
+            guard step.isRoomExit else { continue }
+            alerts.append(
+                PlannedAlert(
+                    identifier: componentIdentifier(
+                        sessionID: session.id,
+                        componentID: step.componentID,
+                        repeatIndex: 1
+                    ),
+                    fireDate: fireDate.addingTimeInterval(roomExitRepeatDelay),
                     title: step.title,
                     body: session.templateSnapshot.name,
                     isCompletion: false,

@@ -16,6 +16,9 @@ Use a paired iPhone and Apple Watch. These checks cannot be completed in this Li
 3. Confirm the first component is **Greet and Smile!** and a start haptic plays if permitted.
 4. Leave the iPhone in another room.
 5. Confirm transitions at 1:00, 5:00, 7:00, 11:00, 13:00, 14:00, 15:00, and completion at 20:00 with **Dunzo! Good job!**
+   The room-exit checkpoint at 11:00 buzzes twice, one second apart. Every other
+   checkpoint buzzes once. Turning on Settings → Sounds & Haptics → Prominent Haptic
+   on the watch makes each buzz longer.
 6. Confirm each notification title matches the component (or completion message).
 7. Confirm the EXIT ROOM component uses amber plus an EXIT ROOM label.
 8. Confirm post-room copy after that milestone.

@@ -317,7 +317,7 @@ struct WatchSessionView: View {
     /// The first observed index is the one already on screen, so only later transitions tap.
     /// A new or restarted session already plays its own start haptic.
     private func handleComponentChange(_ newIndex: Int?) {
-        guard let newIndex, store.currentProjection?.phase == .running else { return }
+        guard let newIndex, let projection = store.currentProjection, projection.phase == .running else { return }
         let sessionID = store.session?.id
         defer {
             lastHapticIndex = newIndex
@@ -325,6 +325,12 @@ struct WatchSessionView: View {
         }
         guard hapticSessionID == sessionID, let previous = lastHapticIndex, previous != newIndex else { return }
         WKInterfaceDevice.current().play(.notification)
+        // Match the doubled room-exit alert the scheduled notifications deliver.
+        guard projection.isRoomExitComponent else { return }
+        Task {
+            try? await Task.sleep(for: .seconds(NotificationPlanner.roomExitRepeatDelay))
+            WKInterfaceDevice.current().play(.notification)
+        }
     }
 
     private func handlePhaseChange(_ phase: LiveProjection.Phase?) {

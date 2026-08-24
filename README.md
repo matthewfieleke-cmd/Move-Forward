@@ -56,7 +56,7 @@ Templates, preferences, sessions, and completed-visit counts stay on device. iPh
 
 The timer is derived from a persisted start timestamp, component durations, and the current clock. Reopening the Watch app reconstructs the correct component and remaining time.
 
-Watch-local `UNUserNotificationCenter` calendar triggers fire component transitions and the completion message. The app does not keep a background wait-chain running, does not use a fake workout session, and does not rely on iPhone notification mirroring.
+Watch-local `UNUserNotificationCenter` calendar triggers fire component transitions and the completion message. The component designated as the room exit fires twice, one second apart, so it is unmistakable on the wrist without looking at the watch. Every other checkpoint fires once. The app does not keep a background wait-chain running, does not use a fake workout session, and does not rely on iPhone notification mirroring.
 
 If a visit is started on iPhone while the Watch is unreachable, Move Forward shows a connection status and queues the session. It does not claim the Watch is ready.
 

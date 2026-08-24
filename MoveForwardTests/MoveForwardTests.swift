@@ -257,6 +257,46 @@ final class MoveForwardTests: XCTestCase {
         XCTAssertEqual(scheduler.delivered, ["unrelated.notification"])
     }
 
+    func testRoomExitCheckpointBuzzesTwice() {
+        let template = StarterTemplates.moveForward
+        let session = SessionEngine.start(template: template, at: start, origin: .watch)
+        let alerts = NotificationPlanner.futureAlerts(for: session, now: start)
+
+        let exitOffsets = alerts
+            .filter { $0.componentID == template.roomExitComponentID }
+            .map { $0.fireDate.timeIntervalSince(start) }
+            .sorted()
+        XCTAssertEqual(exitOffsets, [TimeInterval(11 * 60), TimeInterval(11 * 60 + 1)])
+    }
+
+    func testOnlyTheRoomExitStepRepeats() {
+        let template = StarterTemplates.moveForward
+        let session = SessionEngine.start(template: template, at: start, origin: .watch)
+        let alerts = NotificationPlanner.futureAlerts(for: session, now: start)
+
+        for component in template.components.dropFirst() where component.id != template.roomExitComponentID {
+            XCTAssertEqual(alerts.filter { $0.componentID == component.id }.count, 1, component.title)
+        }
+        XCTAssertEqual(alerts.filter(\.isCompletion).count, 1)
+    }
+
+    func testRepeatedExitAlertCanBeCancelled() {
+        let template = StarterTemplates.moveForward
+        let session = SessionEngine.start(template: template, at: start, origin: .watch)
+        for alert in NotificationPlanner.futureAlerts(for: session, now: start) {
+            XCTAssertTrue(session.notificationIdentifiers.contains(alert.identifier), alert.identifier)
+        }
+    }
+
+    func testTemplateWithoutRoomExitNeverRepeats() {
+        var template = StarterTemplates.moveForward
+        template.roomExitComponentID = nil
+        let session = SessionEngine.start(template: template, at: start, origin: .watch)
+        let alerts = NotificationPlanner.futureAlerts(for: session, now: start)
+        XCTAssertEqual(alerts.count, template.components.count - 1 + 1)
+        XCTAssertEqual(Set(alerts.map(\.identifier)).count, alerts.count)
+    }
+
     func testEveryScheduledIdentifierCarriesTheSweepPrefix() {
         let session = SessionEngine.start(template: StarterTemplates.moveForward, at: start, origin: .watch)
         let alerts = NotificationPlanner.futureAlerts(for: session, now: start)
