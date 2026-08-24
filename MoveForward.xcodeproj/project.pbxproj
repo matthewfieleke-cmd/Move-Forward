@@ -1,0 +1,1061 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+		8B490351E676ABFE4E5E58EE /* DurationFitting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8295CC42415AE4F8765A9BA /* DurationFitting.swift */; };
+		AC60E444E4DC8B0911D612CF /* DurationFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D736D2EDF570B7B38B5A709 /* DurationFormatting.swift */; };
+		310D4E92AF0884E0EB993F91 /* DurationMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0073E02E65B5137DAF220A /* DurationMath.swift */; };
+		2C322C9191E185B74E4A0634 /* NotificationPlanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF035E8F3376F742BF45BB9 /* NotificationPlanner.swift */; };
+		22CA30558C3653D7D7321D2F /* SessionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF34BDADA091BC24EB81492 /* SessionEngine.swift */; };
+		8AB5C8302990ED36C470D563 /* StarterTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9247C5BBC824A1B377F56322 /* StarterTemplates.swift */; };
+		E49DDF7FD9C50E47E0E8694A /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53B0367D3CA71F87C5F4E5B /* Statistics.swift */; };
+		3597DE556072524F153F1A66 /* SyncEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C5AF6D96B9E44A43E387E /* SyncEnvelope.swift */; };
+		84FD5B75170D2BE9C89F57D8 /* TemplateTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92AB28160AFF35875C27123 /* TemplateTimeline.swift */; };
+		D14ACE83B3DF3AD0878100B1 /* TemplateValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1904FD83BC5A9174B546A09B /* TemplateValidation.swift */; };
+		E4D466118EB8B2D7C0C822BF /* VisitActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBA1F8847A18DE6788CD400 /* VisitActivityAttributes.swift */; };
+		F1F385C0A835153AA9815DF7 /* VisitModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F67F2DB4A6712452CE663E3 /* VisitModels.swift */; };
+		E1FB5C4B8C5172ED7381917B /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A412B2D36688514A9C86D3D6 /* AppStore.swift */; };
+		E5890D3783D9A160F180619C /* ChooserLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE19A79CE58310EC3B2B1C0 /* ChooserLaunch.swift */; };
+		1D3ACD244AF75B8D2DF473C3 /* ConnectivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BD0F2821E36F634ECAD837 /* ConnectivityService.swift */; };
+		F6898132857711B5F4556D7C /* LiveActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D7F6B3DE4750A5689FF81B /* LiveActivityController.swift */; };
+		EA1CF79067E35F649F74C00F /* NotificationScheduling.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD748E6B4B49A14593B60169 /* NotificationScheduling.swift */; };
+		E419387348755005D983F0EE /* OpenTemplateChooserIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B10C2DA8227B63BCF2149C2 /* OpenTemplateChooserIntent.swift */; };
+		0907CF552F4EFBDB4A7456F6 /* PersistenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F8CB0036D6DA32D7D3DB23 /* PersistenceStore.swift */; };
+		DBD9813BFD92198BE5282474 /* SessionNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA343D19E50B516B019ADE8 /* SessionNotificationController.swift */; };
+		D80D7B6C3071EE2E00D0930D /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BC54348794D7D048696E6C /* Theme.swift */; };
+		3F69DF60AEC651A00DA399DE /* ActiveSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E970D80D26F0AB3D896843DA /* ActiveSessionView.swift */; };
+		B8697E1A0CA43453AEDE1CC6 /* MoveForwardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DBDAEDA5ED7334F189C3B4 /* MoveForwardApp.swift */; };
+		4C92563D3ECC7580B1869125 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FFA49280E43B6C5BE98E34 /* OnboardingView.swift */; };
+		B10D7D02E9E50AF84D513F75 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0508A2784EDE9A3C7DD2A34 /* RootView.swift */; };
+		734E4944ABB584F034ECA809 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3C2B5A7D6FF59AD2C750EA /* SettingsView.swift */; };
+		85F501680823203162047DE2 /* SharedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B0A7F60636DEF6DBC10149 /* SharedViews.swift */; };
+		84E579AD4A6E79B94E654624 /* TemplateEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903CCA054576B5F7E2936CC2 /* TemplateEditorView.swift */; };
+		97244AEDD332B603D693853F /* TimersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2100E2CE5A2C063AE8DC20E2 /* TimersView.swift */; };
+		BE986FF50C1C2611CCD4A5FB /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3ED0FE0BF1573FB732DB0E /* TodayView.swift */; };
+		49FAE9C4A4A37A3129A1BED6 /* DurationFitting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8295CC42415AE4F8765A9BA /* DurationFitting.swift */; };
+		DF49FB37D1870D95B8EB9935 /* DurationFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D736D2EDF570B7B38B5A709 /* DurationFormatting.swift */; };
+		84D6990AA738091BB7FB5185 /* DurationMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0073E02E65B5137DAF220A /* DurationMath.swift */; };
+		2FEA1C5C80F63F4EC5D67D25 /* NotificationPlanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF035E8F3376F742BF45BB9 /* NotificationPlanner.swift */; };
+		484E84691D9C6FAC30A8BFAF /* SessionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF34BDADA091BC24EB81492 /* SessionEngine.swift */; };
+		2B722E7E7D8FDAE9B15D8FC7 /* StarterTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9247C5BBC824A1B377F56322 /* StarterTemplates.swift */; };
+		176F07D6F84A070CD7E9A3BF /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53B0367D3CA71F87C5F4E5B /* Statistics.swift */; };
+		8136DD57161A35D76F5F520F /* SyncEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C5AF6D96B9E44A43E387E /* SyncEnvelope.swift */; };
+		22007C0796F598746AECE2F0 /* TemplateTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92AB28160AFF35875C27123 /* TemplateTimeline.swift */; };
+		EBFD1058FAB382244ACCC221 /* TemplateValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1904FD83BC5A9174B546A09B /* TemplateValidation.swift */; };
+		F991949D659FA6AA0669C8A7 /* VisitActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBA1F8847A18DE6788CD400 /* VisitActivityAttributes.swift */; };
+		47CC07D3DF9DB62FFBF4C1AC /* VisitModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F67F2DB4A6712452CE663E3 /* VisitModels.swift */; };
+		111B2DB23E14FD0494AC4F50 /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A412B2D36688514A9C86D3D6 /* AppStore.swift */; };
+		ABA0DE8B827714AFA6CD23A5 /* ChooserLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE19A79CE58310EC3B2B1C0 /* ChooserLaunch.swift */; };
+		B3B0D9F1997C5ABCDD98F7A5 /* ConnectivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BD0F2821E36F634ECAD837 /* ConnectivityService.swift */; };
+		625A5428CD3260AEDE8B85EB /* LiveActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D7F6B3DE4750A5689FF81B /* LiveActivityController.swift */; };
+		50A02D853308FEE2032297B2 /* NotificationScheduling.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD748E6B4B49A14593B60169 /* NotificationScheduling.swift */; };
+		FE8B582D28936AF32D143233 /* OpenTemplateChooserIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B10C2DA8227B63BCF2149C2 /* OpenTemplateChooserIntent.swift */; };
+		ABFAA7CDB8313F10FF602A8C /* PersistenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F8CB0036D6DA32D7D3DB23 /* PersistenceStore.swift */; };
+		40FC09EB5254483992C72227 /* SessionNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA343D19E50B516B019ADE8 /* SessionNotificationController.swift */; };
+		B9B53A9F47AFAA4C87688419 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BC54348794D7D048696E6C /* Theme.swift */; };
+		CF4FB7C0B75D74A9895A8EC7 /* MoveForwardWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3651AB78DEC8965D561F31ED /* MoveForwardWatchApp.swift */; };
+		8499433D47C7BF210AC2A0CE /* WatchRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD8033060C15F68DE171D4B /* WatchRootView.swift */; };
+		F3DFDE76C186B6827479AF89 /* VisitModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F67F2DB4A6712452CE663E3 /* VisitModels.swift */; };
+		D1341272D3A4A075FA7E71AE /* VisitActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBA1F8847A18DE6788CD400 /* VisitActivityAttributes.swift */; };
+		A4FECF945946C8CDA8FD7C19 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BC54348794D7D048696E6C /* Theme.swift */; };
+		241B49325B7FD0D2C4201E9A /* MoveForwardLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20F391BB4806767931DDA6A /* MoveForwardLiveActivity.swift */; };
+		5FD090B28A2D690ABB3D631D /* VisitModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F67F2DB4A6712452CE663E3 /* VisitModels.swift */; };
+		D5C681DB8A90C1A7A92F0F97 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BC54348794D7D048696E6C /* Theme.swift */; };
+		EA834FD380046834F984F0D2 /* ChooserComplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E6F7304C9437CE0E81D481 /* ChooserComplication.swift */; };
+		9A433C1317E7CAFEB82F5D8F /* MoveForwardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C264A1F2E9E6CF4BC88C8D9 /* MoveForwardTests.swift */; };
+		3F33BDB6809C0EBC8932F9E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90090D5647E69047322A595F /* Assets.xcassets */; };
+		8D2397CD5A05483167647AE7 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 62392A0A5C04D64718D013A9 /* PrivacyInfo.xcprivacy */; };
+		7E4FCFBB912CC2BBE339D41D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A981378F637E43B348AE61C /* Assets.xcassets */; };
+		F0E9E01ECA5863AA7D5EBF36 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 6F185B8C68B42D37AF15219B /* PrivacyInfo.xcprivacy */; };
+		3AFE188AC87E7325C4C18B12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27D58FC98A599F0CB5B90A28 /* Assets.xcassets */; };
+		7E7065BE02C1033443C69029 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 75657503D5E95FB9809DF070 /* PrivacyInfo.xcprivacy */; };
+		A4004296A923ACFA0FBF77CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0E15C4414A52ABCCAD4B2D7 /* Assets.xcassets */; };
+		9723D9D9B861760B164F9C73 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = C7575EDD29B9C06BC987540D /* PrivacyInfo.xcprivacy */; };
+		A64DBF0411CE9C4AFAC84073 /* MoveForwardWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 5EA77C16E6820B7B3EEC81A5 /* MoveForwardWatch.app */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		475AA24BA4E757EE348C940F /* MoveForwardWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F7AA3EE6D1BD119B59024939 /* MoveForwardWidgets.appex */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B99796C786762C6A1A1AF674 /* MoveForwardWatchWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F7AF4000AA69494EA29CE49A /* MoveForwardWatchWidgets.appex */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C22229E026BAEEC0132F5B18 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5956C2AA27B1BCE5F358B7BB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FD390CA5B3255F7C94E5776F;
+			remoteInfo = MoveForwardWatch;
+		};
+		E351496C6958E78FD0675C7C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5956C2AA27B1BCE5F358B7BB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA6C782B5706E32E025B81ED;
+			remoteInfo = MoveForwardWidgets;
+		};
+		0A659491B30C0F192B7D0064 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5956C2AA27B1BCE5F358B7BB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 68B6DB5E6F2D18027AED0E3D;
+			remoteInfo = MoveForwardWatchWidgets;
+		};
+		0C7892EC0A48FEC74A6378D3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5956C2AA27B1BCE5F358B7BB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 25DB3A8C196F258CE9DA58B2;
+			remoteInfo = MoveForward;
+		};
+		0469DD17918E04EE5C3CEC9D /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = ( A64DBF0411CE9C4AFAC84073 /* MoveForwardWatch.app in Embed Watch Content */, );
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		589C3C7DA1EFC8B08DEA05C1 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = ( 475AA24BA4E757EE348C940F /* MoveForwardWidgets.appex in Embed Foundation Extensions */, );
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7C47095C8B5D2DB68DAB2EC8 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = ( B99796C786762C6A1A1AF674 /* MoveForwardWatchWidgets.appex in Embed Foundation Extensions */, );
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F8295CC42415AE4F8765A9BA /* DurationFitting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationFitting.swift; sourceTree = "<group>"; };
+		9D736D2EDF570B7B38B5A709 /* DurationFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationFormatting.swift; sourceTree = "<group>"; };
+		0A0073E02E65B5137DAF220A /* DurationMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationMath.swift; sourceTree = "<group>"; };
+		1AF035E8F3376F742BF45BB9 /* NotificationPlanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPlanner.swift; sourceTree = "<group>"; };
+		CCF34BDADA091BC24EB81492 /* SessionEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionEngine.swift; sourceTree = "<group>"; };
+		9247C5BBC824A1B377F56322 /* StarterTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarterTemplates.swift; sourceTree = "<group>"; };
+		F53B0367D3CA71F87C5F4E5B /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
+		090C5AF6D96B9E44A43E387E /* SyncEnvelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncEnvelope.swift; sourceTree = "<group>"; };
+		E92AB28160AFF35875C27123 /* TemplateTimeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateTimeline.swift; sourceTree = "<group>"; };
+		1904FD83BC5A9174B546A09B /* TemplateValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateValidation.swift; sourceTree = "<group>"; };
+		3EBA1F8847A18DE6788CD400 /* VisitActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitActivityAttributes.swift; sourceTree = "<group>"; };
+		5F67F2DB4A6712452CE663E3 /* VisitModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitModels.swift; sourceTree = "<group>"; };
+		A412B2D36688514A9C86D3D6 /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
+		1AE19A79CE58310EC3B2B1C0 /* ChooserLaunch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooserLaunch.swift; sourceTree = "<group>"; };
+		66BD0F2821E36F634ECAD837 /* ConnectivityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityService.swift; sourceTree = "<group>"; };
+		C7D7F6B3DE4750A5689FF81B /* LiveActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityController.swift; sourceTree = "<group>"; };
+		CD748E6B4B49A14593B60169 /* NotificationScheduling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScheduling.swift; sourceTree = "<group>"; };
+		7B10C2DA8227B63BCF2149C2 /* OpenTemplateChooserIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenTemplateChooserIntent.swift; sourceTree = "<group>"; };
+		D0F8CB0036D6DA32D7D3DB23 /* PersistenceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceStore.swift; sourceTree = "<group>"; };
+		DAA343D19E50B516B019ADE8 /* SessionNotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionNotificationController.swift; sourceTree = "<group>"; };
+		32BC54348794D7D048696E6C /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		E970D80D26F0AB3D896843DA /* ActiveSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveSessionView.swift; sourceTree = "<group>"; };
+		E1DBDAEDA5ED7334F189C3B4 /* MoveForwardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveForwardApp.swift; sourceTree = "<group>"; };
+		E4FFA49280E43B6C5BE98E34 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		E0508A2784EDE9A3C7DD2A34 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		0D3C2B5A7D6FF59AD2C750EA /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A4B0A7F60636DEF6DBC10149 /* SharedViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedViews.swift; sourceTree = "<group>"; };
+		903CCA054576B5F7E2936CC2 /* TemplateEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateEditorView.swift; sourceTree = "<group>"; };
+		2100E2CE5A2C063AE8DC20E2 /* TimersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimersView.swift; sourceTree = "<group>"; };
+		CE3ED0FE0BF1573FB732DB0E /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
+		3651AB78DEC8965D561F31ED /* MoveForwardWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveForwardWatchApp.swift; sourceTree = "<group>"; };
+		ABD8033060C15F68DE171D4B /* WatchRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchRootView.swift; sourceTree = "<group>"; };
+		E20F391BB4806767931DDA6A /* MoveForwardLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveForwardLiveActivity.swift; sourceTree = "<group>"; };
+		B4E6F7304C9437CE0E81D481 /* ChooserComplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooserComplication.swift; sourceTree = "<group>"; };
+		1C264A1F2E9E6CF4BC88C8D9 /* MoveForwardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveForwardTests.swift; sourceTree = "<group>"; };
+		630F787B6B3413446D0DCD45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		818F9B20BB5E369FECD7B795 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A470C5D8DEC9B96EFD4BC8A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1B141D7291400184E0C5DB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62392A0A5C04D64718D013A9 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		6F185B8C68B42D37AF15219B /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		75657503D5E95FB9809DF070 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		C7575EDD29B9C06BC987540D /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		90090D5647E69047322A595F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2A981378F637E43B348AE61C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		27D58FC98A599F0CB5B90A28 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E0E15C4414A52ABCCAD4B2D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F2D50680AC0D3495D9438BB0 /* Shared.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
+		1956D9CE2BB7DD9F3E5DF343 /* MoveForward.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoveForward.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5EA77C16E6820B7B3EEC81A5 /* MoveForwardWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoveForwardWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7AA3EE6D1BD119B59024939 /* MoveForwardWidgets.appex */ = {isa = PBXFileReference; explicitFileType = wrapper.app-extension; includeInIndex = 0; path = MoveForwardWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7AF4000AA69494EA29CE49A /* MoveForwardWatchWidgets.appex */ = {isa = PBXFileReference; explicitFileType = wrapper.app-extension; includeInIndex = 0; path = MoveForwardWatchWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F733EC1356810011A852C369 /* MoveForwardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoveForwardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3EFE69218594B76B20F02622 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ABA74F7C5F208089A3D4CF76 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		133AD1974E771DED74A04BA0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0B925E6B52152379E31FEB1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87414D463375061BC8D73060 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED08DB8C6F4A62183DD2EBB0 /* SharedDomain */ = {
+			isa = PBXGroup;
+			children = (
+				F8295CC42415AE4F8765A9BA /* DurationFitting.swift */,
+				9D736D2EDF570B7B38B5A709 /* DurationFormatting.swift */,
+				0A0073E02E65B5137DAF220A /* DurationMath.swift */,
+				1AF035E8F3376F742BF45BB9 /* NotificationPlanner.swift */,
+				CCF34BDADA091BC24EB81492 /* SessionEngine.swift */,
+				9247C5BBC824A1B377F56322 /* StarterTemplates.swift */,
+				F53B0367D3CA71F87C5F4E5B /* Statistics.swift */,
+				090C5AF6D96B9E44A43E387E /* SyncEnvelope.swift */,
+				E92AB28160AFF35875C27123 /* TemplateTimeline.swift */,
+				1904FD83BC5A9174B546A09B /* TemplateValidation.swift */,
+				3EBA1F8847A18DE6788CD400 /* VisitActivityAttributes.swift */,
+				5F67F2DB4A6712452CE663E3 /* VisitModels.swift */,
+			);
+			path = SharedDomain;
+			sourceTree = "<group>";
+		};
+		E8A462CA27D168482AD85A95 /* SharedApp */ = {
+			isa = PBXGroup;
+			children = (
+				A412B2D36688514A9C86D3D6 /* AppStore.swift */,
+				1AE19A79CE58310EC3B2B1C0 /* ChooserLaunch.swift */,
+				66BD0F2821E36F634ECAD837 /* ConnectivityService.swift */,
+				C7D7F6B3DE4750A5689FF81B /* LiveActivityController.swift */,
+				CD748E6B4B49A14593B60169 /* NotificationScheduling.swift */,
+				7B10C2DA8227B63BCF2149C2 /* OpenTemplateChooserIntent.swift */,
+				D0F8CB0036D6DA32D7D3DB23 /* PersistenceStore.swift */,
+				DAA343D19E50B516B019ADE8 /* SessionNotificationController.swift */,
+				32BC54348794D7D048696E6C /* Theme.swift */,
+			);
+			path = SharedApp;
+			sourceTree = "<group>";
+		};
+		81A13446BCA3C28708B439F2 /* MoveForward */ = {
+			isa = PBXGroup;
+			children = (
+				E970D80D26F0AB3D896843DA /* ActiveSessionView.swift */,
+				E1DBDAEDA5ED7334F189C3B4 /* MoveForwardApp.swift */,
+				E4FFA49280E43B6C5BE98E34 /* OnboardingView.swift */,
+				E0508A2784EDE9A3C7DD2A34 /* RootView.swift */,
+				0D3C2B5A7D6FF59AD2C750EA /* SettingsView.swift */,
+				A4B0A7F60636DEF6DBC10149 /* SharedViews.swift */,
+				903CCA054576B5F7E2936CC2 /* TemplateEditorView.swift */,
+				2100E2CE5A2C063AE8DC20E2 /* TimersView.swift */,
+				CE3ED0FE0BF1573FB732DB0E /* TodayView.swift */,
+				630F787B6B3413446D0DCD45 /* Info.plist */,
+				62392A0A5C04D64718D013A9 /* PrivacyInfo.xcprivacy */,
+				90090D5647E69047322A595F /* Assets.xcassets */,
+			);
+			path = MoveForward;
+			sourceTree = "<group>";
+		};
+		42C83A60575E38F0CEBBB325 /* MoveForwardWatch */ = {
+			isa = PBXGroup;
+			children = (
+				3651AB78DEC8965D561F31ED /* MoveForwardWatchApp.swift */,
+				ABD8033060C15F68DE171D4B /* WatchRootView.swift */,
+				818F9B20BB5E369FECD7B795 /* Info.plist */,
+				6F185B8C68B42D37AF15219B /* PrivacyInfo.xcprivacy */,
+				2A981378F637E43B348AE61C /* Assets.xcassets */,
+			);
+			path = MoveForwardWatch;
+			sourceTree = "<group>";
+		};
+		5478CC4FB5C403948BDCDBA3 /* MoveForwardWidgets */ = {
+			isa = PBXGroup;
+			children = (
+				E20F391BB4806767931DDA6A /* MoveForwardLiveActivity.swift */,
+				A470C5D8DEC9B96EFD4BC8A8 /* Info.plist */,
+				75657503D5E95FB9809DF070 /* PrivacyInfo.xcprivacy */,
+				27D58FC98A599F0CB5B90A28 /* Assets.xcassets */,
+			);
+			path = MoveForwardWidgets;
+			sourceTree = "<group>";
+		};
+		00373AEEB8A2670401D47B51 /* MoveForwardWatchWidgets */ = {
+			isa = PBXGroup;
+			children = (
+				B4E6F7304C9437CE0E81D481 /* ChooserComplication.swift */,
+				F1B141D7291400184E0C5DB6 /* Info.plist */,
+				C7575EDD29B9C06BC987540D /* PrivacyInfo.xcprivacy */,
+				E0E15C4414A52ABCCAD4B2D7 /* Assets.xcassets */,
+			);
+			path = MoveForwardWatchWidgets;
+			sourceTree = "<group>";
+		};
+		1619FC7C78EB46980C9E9DE2 /* MoveForwardTests */ = {
+			isa = PBXGroup;
+			children = (
+				1C264A1F2E9E6CF4BC88C8D9 /* MoveForwardTests.swift */,
+			);
+			path = MoveForwardTests;
+			sourceTree = "<group>";
+		};
+		D1F831BEDADE6D7706CCBA24 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				F2D50680AC0D3495D9438BB0 /* Shared.xcconfig */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		2AC8BA37DAC32D5437812408 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1956D9CE2BB7DD9F3E5DF343 /* MoveForward.app */,
+				5EA77C16E6820B7B3EEC81A5 /* MoveForwardWatch.app */,
+				F7AA3EE6D1BD119B59024939 /* MoveForwardWidgets.appex */,
+				F7AF4000AA69494EA29CE49A /* MoveForwardWatchWidgets.appex */,
+				F733EC1356810011A852C369 /* MoveForwardTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0BF809BD56B5D91BF6950DA4 = {
+			isa = PBXGroup;
+			children = (
+				ED08DB8C6F4A62183DD2EBB0 /* SharedDomain */,
+				E8A462CA27D168482AD85A95 /* SharedApp */,
+				81A13446BCA3C28708B439F2 /* MoveForward */,
+				42C83A60575E38F0CEBBB325 /* MoveForwardWatch */,
+				5478CC4FB5C403948BDCDBA3 /* MoveForwardWidgets */,
+				00373AEEB8A2670401D47B51 /* MoveForwardWatchWidgets */,
+				1619FC7C78EB46980C9E9DE2 /* MoveForwardTests */,
+				D1F831BEDADE6D7706CCBA24 /* Config */,
+				2AC8BA37DAC32D5437812408 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		25DB3A8C196F258CE9DA58B2 /* MoveForward */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A73A294D96C945B4335E2DF5 /* Build configuration list for PBXNativeTarget "MoveForward" */;
+			buildPhases = (
+				0579A516E86F191D4054FEE3 /* Sources */,
+				3EFE69218594B76B20F02622 /* Frameworks */,
+				45B2B26E4D3594E50763BED1 /* Resources */,
+				0469DD17918E04EE5C3CEC9D /* Embed Watch Content */,
+				589C3C7DA1EFC8B08DEA05C1 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				79BBA340D290B1ACC4831175 /* PBXTargetDependency */,
+				B0A51CF6731A74BC6E10825D /* PBXTargetDependency */,
+			);
+			name = MoveForward;
+			productName = MoveForward;
+			productReference = 1956D9CE2BB7DD9F3E5DF343 /* MoveForward.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FD390CA5B3255F7C94E5776F /* MoveForwardWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0611EBF903103A7914DB2CF2 /* Build configuration list for PBXNativeTarget "MoveForwardWatch" */;
+			buildPhases = (
+				7C1A1BC7DDD98DFA8CA6CD6A /* Sources */,
+				ABA74F7C5F208089A3D4CF76 /* Frameworks */,
+				5D37D7ECAC9F4D712549CB14 /* Resources */,
+				7C47095C8B5D2DB68DAB2EC8 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				09F42E750A92580C05CF7371 /* PBXTargetDependency */,
+			);
+			name = MoveForwardWatch;
+			productName = MoveForwardWatch;
+			productReference = 5EA77C16E6820B7B3EEC81A5 /* MoveForwardWatch.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FA6C782B5706E32E025B81ED /* MoveForwardWidgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5BE0D827DD4702B9CF76E50 /* Build configuration list for PBXNativeTarget "MoveForwardWidgets" */;
+			buildPhases = (
+				8A0A3A32DDE07344115C642B /* Sources */,
+				133AD1974E771DED74A04BA0 /* Frameworks */,
+				4BE3AAB3A5606D4E14391446 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MoveForwardWidgets;
+			productName = MoveForwardWidgets;
+			productReference = F7AA3EE6D1BD119B59024939 /* MoveForwardWidgets.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		68B6DB5E6F2D18027AED0E3D /* MoveForwardWatchWidgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E6CCC513052587174F5C65AA /* Build configuration list for PBXNativeTarget "MoveForwardWatchWidgets" */;
+			buildPhases = (
+				E4D36B7DA8381D3998AF270F /* Sources */,
+				F0B925E6B52152379E31FEB1 /* Frameworks */,
+				C4B379295019C8FFBFC400D4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MoveForwardWatchWidgets;
+			productName = MoveForwardWatchWidgets;
+			productReference = F7AF4000AA69494EA29CE49A /* MoveForwardWatchWidgets.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		9DD83FC353FABB83E53A3DDF /* MoveForwardTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 248864E020914FE204983273 /* Build configuration list for PBXNativeTarget "MoveForwardTests" */;
+			buildPhases = (
+				A7277DA4023A7131FD8DDF42 /* Sources */,
+				87414D463375061BC8D73060 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				470CA3AFA5473A8C0E85F1AF /* PBXTargetDependency */,
+			);
+			name = MoveForwardTests;
+			productName = MoveForwardTests;
+			productReference = F733EC1356810011A852C369 /* MoveForwardTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5956C2AA27B1BCE5F358B7BB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					25DB3A8C196F258CE9DA58B2 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					FD390CA5B3255F7C94E5776F = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					FA6C782B5706E32E025B81ED = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					68B6DB5E6F2D18027AED0E3D = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					9DD83FC353FABB83E53A3DDF = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = CD00DE3CCE615982594987BE /* Build configuration list for PBXProject "MoveForward" */;
+			compatibilityVersion = "Xcode 15.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0BF809BD56B5D91BF6950DA4;
+			productRefGroup = 2AC8BA37DAC32D5437812408 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				25DB3A8C196F258CE9DA58B2 /* MoveForward */,
+				FD390CA5B3255F7C94E5776F /* MoveForwardWatch */,
+				FA6C782B5706E32E025B81ED /* MoveForwardWidgets */,
+				68B6DB5E6F2D18027AED0E3D /* MoveForwardWatchWidgets */,
+				9DD83FC353FABB83E53A3DDF /* MoveForwardTests */,
+			);
+		};
+		0579A516E86F191D4054FEE3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B490351E676ABFE4E5E58EE /* DurationFitting.swift in Sources */,
+				AC60E444E4DC8B0911D612CF /* DurationFormatting.swift in Sources */,
+				310D4E92AF0884E0EB993F91 /* DurationMath.swift in Sources */,
+				2C322C9191E185B74E4A0634 /* NotificationPlanner.swift in Sources */,
+				22CA30558C3653D7D7321D2F /* SessionEngine.swift in Sources */,
+				8AB5C8302990ED36C470D563 /* StarterTemplates.swift in Sources */,
+				E49DDF7FD9C50E47E0E8694A /* Statistics.swift in Sources */,
+				3597DE556072524F153F1A66 /* SyncEnvelope.swift in Sources */,
+				84FD5B75170D2BE9C89F57D8 /* TemplateTimeline.swift in Sources */,
+				D14ACE83B3DF3AD0878100B1 /* TemplateValidation.swift in Sources */,
+				E4D466118EB8B2D7C0C822BF /* VisitActivityAttributes.swift in Sources */,
+				F1F385C0A835153AA9815DF7 /* VisitModels.swift in Sources */,
+				E1FB5C4B8C5172ED7381917B /* AppStore.swift in Sources */,
+				E5890D3783D9A160F180619C /* ChooserLaunch.swift in Sources */,
+				1D3ACD244AF75B8D2DF473C3 /* ConnectivityService.swift in Sources */,
+				F6898132857711B5F4556D7C /* LiveActivityController.swift in Sources */,
+				EA1CF79067E35F649F74C00F /* NotificationScheduling.swift in Sources */,
+				E419387348755005D983F0EE /* OpenTemplateChooserIntent.swift in Sources */,
+				0907CF552F4EFBDB4A7456F6 /* PersistenceStore.swift in Sources */,
+				DBD9813BFD92198BE5282474 /* SessionNotificationController.swift in Sources */,
+				D80D7B6C3071EE2E00D0930D /* Theme.swift in Sources */,
+				3F69DF60AEC651A00DA399DE /* ActiveSessionView.swift in Sources */,
+				B8697E1A0CA43453AEDE1CC6 /* MoveForwardApp.swift in Sources */,
+				4C92563D3ECC7580B1869125 /* OnboardingView.swift in Sources */,
+				B10D7D02E9E50AF84D513F75 /* RootView.swift in Sources */,
+				734E4944ABB584F034ECA809 /* SettingsView.swift in Sources */,
+				85F501680823203162047DE2 /* SharedViews.swift in Sources */,
+				84E579AD4A6E79B94E654624 /* TemplateEditorView.swift in Sources */,
+				97244AEDD332B603D693853F /* TimersView.swift in Sources */,
+				BE986FF50C1C2611CCD4A5FB /* TodayView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7C1A1BC7DDD98DFA8CA6CD6A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49FAE9C4A4A37A3129A1BED6 /* DurationFitting.swift in Sources */,
+				DF49FB37D1870D95B8EB9935 /* DurationFormatting.swift in Sources */,
+				84D6990AA738091BB7FB5185 /* DurationMath.swift in Sources */,
+				2FEA1C5C80F63F4EC5D67D25 /* NotificationPlanner.swift in Sources */,
+				484E84691D9C6FAC30A8BFAF /* SessionEngine.swift in Sources */,
+				2B722E7E7D8FDAE9B15D8FC7 /* StarterTemplates.swift in Sources */,
+				176F07D6F84A070CD7E9A3BF /* Statistics.swift in Sources */,
+				8136DD57161A35D76F5F520F /* SyncEnvelope.swift in Sources */,
+				22007C0796F598746AECE2F0 /* TemplateTimeline.swift in Sources */,
+				EBFD1058FAB382244ACCC221 /* TemplateValidation.swift in Sources */,
+				F991949D659FA6AA0669C8A7 /* VisitActivityAttributes.swift in Sources */,
+				47CC07D3DF9DB62FFBF4C1AC /* VisitModels.swift in Sources */,
+				111B2DB23E14FD0494AC4F50 /* AppStore.swift in Sources */,
+				ABA0DE8B827714AFA6CD23A5 /* ChooserLaunch.swift in Sources */,
+				B3B0D9F1997C5ABCDD98F7A5 /* ConnectivityService.swift in Sources */,
+				625A5428CD3260AEDE8B85EB /* LiveActivityController.swift in Sources */,
+				50A02D853308FEE2032297B2 /* NotificationScheduling.swift in Sources */,
+				FE8B582D28936AF32D143233 /* OpenTemplateChooserIntent.swift in Sources */,
+				ABFAA7CDB8313F10FF602A8C /* PersistenceStore.swift in Sources */,
+				40FC09EB5254483992C72227 /* SessionNotificationController.swift in Sources */,
+				B9B53A9F47AFAA4C87688419 /* Theme.swift in Sources */,
+				CF4FB7C0B75D74A9895A8EC7 /* MoveForwardWatchApp.swift in Sources */,
+				8499433D47C7BF210AC2A0CE /* WatchRootView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A0A3A32DDE07344115C642B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3DFDE76C186B6827479AF89 /* VisitModels.swift in Sources */,
+				D1341272D3A4A075FA7E71AE /* VisitActivityAttributes.swift in Sources */,
+				A4FECF945946C8CDA8FD7C19 /* Theme.swift in Sources */,
+				241B49325B7FD0D2C4201E9A /* MoveForwardLiveActivity.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E4D36B7DA8381D3998AF270F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FD090B28A2D690ABB3D631D /* VisitModels.swift in Sources */,
+				D5C681DB8A90C1A7A92F0F97 /* Theme.swift in Sources */,
+				EA834FD380046834F984F0D2 /* ChooserComplication.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7277DA4023A7131FD8DDF42 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A433C1317E7CAFEB82F5D8F /* MoveForwardTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45B2B26E4D3594E50763BED1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F33BDB6809C0EBC8932F9E4 /* Assets.xcassets in Resources */,
+				8D2397CD5A05483167647AE7 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D37D7ECAC9F4D712549CB14 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E4FCFBB912CC2BBE339D41D /* Assets.xcassets in Resources */,
+				F0E9E01ECA5863AA7D5EBF36 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4BE3AAB3A5606D4E14391446 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AFE188AC87E7325C4C18B12 /* Assets.xcassets in Resources */,
+				7E7065BE02C1033443C69029 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C4B379295019C8FFBFC400D4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4004296A923ACFA0FBF77CB /* Assets.xcassets in Resources */,
+				9723D9D9B861760B164F9C73 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		79BBA340D290B1ACC4831175 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FD390CA5B3255F7C94E5776F /* MoveForwardWatch */;
+			targetProxy = C22229E026BAEEC0132F5B18 /* PBXContainerItemProxy */;
+		};
+		B0A51CF6731A74BC6E10825D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA6C782B5706E32E025B81ED /* MoveForwardWidgets */;
+			targetProxy = E351496C6958E78FD0675C7C /* PBXContainerItemProxy */;
+		};
+		09F42E750A92580C05CF7371 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 68B6DB5E6F2D18027AED0E3D /* MoveForwardWatchWidgets */;
+			targetProxy = 0A659491B30C0F192B7D0064 /* PBXContainerItemProxy */;
+		};
+		470CA3AFA5473A8C0E85F1AF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 25DB3A8C196F258CE9DA58B2 /* MoveForward */;
+			targetProxy = 0C7892EC0A48FEC74A6378D3 /* PBXContainerItemProxy */;
+		};
+		C18C42856B8EAD25030A3725 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F2D50680AC0D3495D9438BB0 /* Shared.xcconfig */;
+			buildSettings = {
+
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = targeted;
+				SWIFT_VERSION = 5.0;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+
+			};
+			name = Debug;
+		};
+		7DEAC68F2AB1D6A9ED5688FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F2D50680AC0D3495D9438BB0 /* Shared.xcconfig */;
+			buildSettings = {
+
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_STRICT_CONCURRENCY = targeted;
+				SWIFT_VERSION = 5.0;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+
+			};
+			name = Release;
+		};
+		C37716B56CFEEDD08620198B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MoveForward/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Move Forward";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.medical";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.moveforward;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+
+			};
+			name = Debug;
+		};
+		FD09698A5B4E52CFD72487FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MoveForward/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Move Forward";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.medical";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.moveforward;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+
+			};
+			name = Release;
+		};
+		04BA9A4B21171D1430F14D74 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MoveForwardWatch/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Move Forward";
+				INFOPLIST_KEY_WKApplication = YES;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = app.moveforward;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.moveforward.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchos watchsimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+
+			};
+			name = Debug;
+		};
+		86FD73EEF7EA4A4E28700774 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MoveForwardWatch/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Move Forward";
+				INFOPLIST_KEY_WKApplication = YES;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = app.moveforward;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.moveforward.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchos watchsimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+
+			};
+			name = Release;
+		};
+		09EEFB5B4399C3E2DB9ADB83 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MoveForwardWidgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Move Forward";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.moveforward.widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+
+			};
+			name = Debug;
+		};
+		A391029E56DD4F488E1E2AF7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MoveForwardWidgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Move Forward";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.moveforward.widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+
+			};
+			name = Release;
+		};
+		676C8A8A0CE98E5CD4D69D5F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MoveForwardWatchWidgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Move Forward";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.moveforward.watchkitapp.widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchos watchsimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+
+			};
+			name = Debug;
+		};
+		859642705C5C6441976D3BE0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MoveForwardWatchWidgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Move Forward";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.moveforward.watchkitapp.widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchos watchsimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+
+			};
+			name = Release;
+		};
+		958B052D279A4FAA62603778 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.moveforward.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MoveForward.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MoveForward";
+
+			};
+			name = Debug;
+		};
+		FCBFA933320B851D022438AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.moveforward.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MoveForward.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MoveForward";
+
+			};
+			name = Release;
+		};
+		CD00DE3CCE615982594987BE /* Build configuration list for PBXProject "MoveForward" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C18C42856B8EAD25030A3725 /* Debug */,
+				7DEAC68F2AB1D6A9ED5688FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A73A294D96C945B4335E2DF5 /* Build configuration list for PBXNativeTarget "MoveForward" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C37716B56CFEEDD08620198B /* Debug */,
+				FD09698A5B4E52CFD72487FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0611EBF903103A7914DB2CF2 /* Build configuration list for PBXNativeTarget "MoveForwardWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04BA9A4B21171D1430F14D74 /* Debug */,
+				86FD73EEF7EA4A4E28700774 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5BE0D827DD4702B9CF76E50 /* Build configuration list for PBXNativeTarget "MoveForwardWidgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				09EEFB5B4399C3E2DB9ADB83 /* Debug */,
+				A391029E56DD4F488E1E2AF7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E6CCC513052587174F5C65AA /* Build configuration list for PBXNativeTarget "MoveForwardWatchWidgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				676C8A8A0CE98E5CD4D69D5F /* Debug */,
+				859642705C5C6441976D3BE0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		248864E020914FE204983273 /* Build configuration list for PBXNativeTarget "MoveForwardTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				958B052D279A4FAA62603778 /* Debug */,
+				FCBFA933320B851D022438AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+	};
+	rootObject = 5956C2AA27B1BCE5F358B7BB /* Project object */;
+}
