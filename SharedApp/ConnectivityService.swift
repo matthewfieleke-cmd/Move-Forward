@@ -38,6 +38,17 @@ final class ConnectivityService: NSObject {
         #endif
     }
 
+    /// True only when a message can be delivered right now. Apple Watch drops this
+    /// as soon as its screen sleeps, so it is not a measure of whether syncing works.
+    var isImmediatelyReachable: Bool {
+        #if canImport(WatchConnectivity)
+        guard let session, session.activationState == .activated else { return false }
+        return session.isReachable
+        #else
+        return false
+        #endif
+    }
+
     func refreshStatus() {
         #if canImport(WatchConnectivity)
         guard let session else {

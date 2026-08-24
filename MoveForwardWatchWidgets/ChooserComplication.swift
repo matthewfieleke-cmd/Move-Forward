@@ -40,26 +40,41 @@ struct ChooserComplicationView: View {
         case .accessoryCircular:
             ZStack {
                 AccessoryWidgetBackground()
-                Image(systemName: "timer")
-                    .font(.title3.weight(.semibold))
+                glyph
+                    .padding(9)
             }
             .widgetLabel("Templates")
         case .accessoryRectangular:
-            VStack(alignment: .leading, spacing: 2) {
-                Label("Move Forward", systemImage: "timer")
-                    .font(.headline)
-                Text("Choose a visit")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+            HStack(spacing: 6) {
+                glyph
+                    .frame(width: 22, height: 22)
+                VStack(alignment: .leading, spacing: 1) {
+                    Text("Move Forward")
+                        .font(.headline)
+                    Text("Choose a visit")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
             }
         case .accessoryInline:
-            Label("Choose visit", systemImage: "timer")
+            // Inline complications only render SF Symbols alongside their text.
+            Label("Move Forward", systemImage: "chevron.forward.circle")
         case .accessoryCorner:
-            Image(systemName: "timer")
-                .widgetLabel("Visit")
+            glyph
+                .padding(4)
+                .widgetLabel("Move Forward")
         default:
-            Image(systemName: "timer")
+            glyph
         }
+    }
+
+    /// The app icon's mark, supplied as a template image so the watch face tints it.
+    private var glyph: some View {
+        Image("ComplicationGlyph")
+            .resizable()
+            .scaledToFit()
+            .widgetAccentable()
+            .accessibilityLabel("Move Forward")
     }
 }
 

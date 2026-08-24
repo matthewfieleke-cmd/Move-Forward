@@ -181,13 +181,13 @@ enum WatchLinkStatus: Equatable, Sendable {
     var title: String {
         switch self {
         case .unknown: return "Checking Apple Watch"
-        case .unsupported: return "Watch not available on this device"
+        case .unsupported: return "Apple Watch not available here"
         case .unpaired: return "No Apple Watch paired"
-        case .appNotInstalled: return "Install Move Forward on Apple Watch"
-        case .unreachable: return "Apple Watch is out of range"
-        case .reachable: return "Apple Watch connected"
-        case .pendingAck: return "Waiting for Apple Watch"
-        case .synced: return "Apple Watch ready"
+        case .appNotInstalled: return "Not installed on Apple Watch"
+        case .unreachable: return "Ready · watch asleep"
+        case .reachable: return "Ready · connected"
+        case .pendingAck: return "Ready · waiting for watch"
+        case .synced: return "Ready · in sync"
         }
     }
 
@@ -202,15 +202,24 @@ enum WatchLinkStatus: Equatable, Sendable {
         case .appNotInstalled:
             return "Open the Watch app on iPhone and install Move Forward."
         case .unreachable:
-            return "A visit started here will sync when the watch is nearby. The watch can still run templates it already has."
-        case .reachable, .synced:
-            return "The watch can receive the current visit and template list."
+            return "Apple Watch drops the live link whenever its screen sleeps. That is normal. Templates, visits, and completed counts sync as soon as it wakes."
+        case .reachable:
+            return "Your watch is awake and receiving updates immediately."
+        case .synced:
+            return "Your watch has the current templates and visit."
         case .pendingAck:
-            return "The visit started on iPhone. Waiting for the watch to confirm scheduled alerts."
+            return "The visit started on iPhone. Your watch schedules its own alerts as soon as it wakes."
         }
     }
 
+    /// Paired with the watch app installed, so syncing will happen. A sleeping watch
+    /// still counts as ready because queued updates arrive when it wakes.
     var isReady: Bool {
-        self == .reachable || self == .synced
+        switch self {
+        case .unreachable, .reachable, .pendingAck, .synced:
+            return true
+        case .unknown, .unsupported, .unpaired, .appNotInstalled:
+            return false
+        }
     }
 }

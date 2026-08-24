@@ -298,6 +298,21 @@ final class MoveForwardTests: XCTestCase {
         XCTAssertTrue(settings.livesActivityEnabled)
     }
 
+    func testSleepingWatchStillCountsAsReady() {
+        XCTAssertTrue(WatchLinkStatus.unreachable.isReady)
+        XCTAssertTrue(WatchLinkStatus.pendingAck.isReady)
+        XCTAssertTrue(WatchLinkStatus.reachable.isReady)
+        XCTAssertTrue(WatchLinkStatus.synced.isReady)
+        XCTAssertFalse(WatchLinkStatus.unreachable.title.localizedCaseInsensitiveContains("out of range"))
+    }
+
+    func testUnpairedOrMissingWatchAppIsNotReady() {
+        XCTAssertFalse(WatchLinkStatus.unpaired.isReady)
+        XCTAssertFalse(WatchLinkStatus.appNotInstalled.isReady)
+        XCTAssertFalse(WatchLinkStatus.unsupported.isReady)
+        XCTAssertFalse(WatchLinkStatus.unknown.isReady)
+    }
+
     func testFitErrorIsAnError() {
         let error: Error = FitError.noComponents
         XCTAssertTrue(error is FitError)

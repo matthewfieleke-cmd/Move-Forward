@@ -319,9 +319,13 @@ final class AppStore: ObservableObject {
             Task { await presentTestAlert() }
             return
         }
-        testAlertStatus = watchStatus.isReady
+        guard watchStatus.isReady else {
+            testAlertStatus = watchStatus.detail
+            return
+        }
+        testAlertStatus = connectivity.isImmediatelyReachable
             ? "Sent. Your Apple Watch should tap in a moment."
-            : "Apple Watch is not reachable. Open Move Forward on the watch, then send again."
+            : "Queued. Raise your wrist or open Move Forward on the watch and it will arrive."
         pushEnvelope(
             SyncEnvelope.make(kind: .testAlert, origin: localDevice, at: clock.now()),
             preferImmediate: true
