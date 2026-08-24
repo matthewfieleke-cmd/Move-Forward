@@ -74,7 +74,8 @@ struct MoveForwardLiveActivity: Widget {
                 .tint(context.state.isRoomExit ? Palette.amber : Palette.teal)
         }
         .padding(16)
-        .activityBackgroundTint(Palette.cream)
+        // iOS 17 and later expect widgets and Live Activities to declare their background.
+        .containerBackground(for: .widget) { Palette.cream }
     }
 
     private func timer(_ date: Date) -> Text {

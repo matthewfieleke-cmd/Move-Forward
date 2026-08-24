@@ -220,7 +220,11 @@ def write_support_files() -> None:
     write(ROOT / "MoveForwardWatch/Assets.xcassets/AppIcon.appiconset/Contents.json", WATCH_APPICON)
     write(ROOT / "MoveForwardWatch/Assets.xcassets/AccentColor.colorset/Contents.json", ACCENT)
     write(ROOT / "MoveForwardWidgets/Assets.xcassets/Contents.json", ASSET_ROOT)
+    # Both widget targets set ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME, so the
+    # colour has to exist in their own catalogues too.
+    write(ROOT / "MoveForwardWidgets/Assets.xcassets/AccentColor.colorset/Contents.json", ACCENT)
     write(ROOT / "MoveForwardWatchWidgets/Assets.xcassets/Contents.json", ASSET_ROOT)
+    write(ROOT / "MoveForwardWatchWidgets/Assets.xcassets/AccentColor.colorset/Contents.json", ACCENT)
 
 
 def scheme_xml(name: str, target_id: str, test_id: str | None = None) -> str:

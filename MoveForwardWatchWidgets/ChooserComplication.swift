@@ -1,6 +1,9 @@
 import SwiftUI
 import WidgetKit
-import AppIntents
+
+struct ChooserEntry: TimelineEntry {
+    let date: Date
+}
 
 struct ChooserTimelineProvider: TimelineProvider {
     func placeholder(in context: Context) -> ChooserEntry {
@@ -12,19 +15,19 @@ struct ChooserTimelineProvider: TimelineProvider {
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<ChooserEntry>) -> Void) {
+        // A launcher has nothing to count down, so one entry is enough.
         completion(Timeline(entries: [ChooserEntry(date: Date())], policy: .never))
     }
 }
 
-struct ChooserEntry: TimelineEntry {
-    let date: Date
-}
-
-struct MoveForwardWatchWidgets: Widget {
+struct ChooserComplicationWidget: Widget {
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: "MoveForwardChooser", provider: ChooserTimelineProvider()) { _ in
             ChooserComplicationView()
                 .widgetURL(URL(string: "moveforward://chooser"))
+                // watchOS 10 and later refuse to render a widget that never declares
+                // a container background.
+                .containerBackground(.clear, for: .widget)
         }
         .configurationDisplayName("Move Forward")
         .description("Opens the visit template list. Nothing starts until you choose.")
@@ -40,14 +43,11 @@ struct ChooserComplicationView: View {
         case .accessoryCircular:
             ZStack {
                 AccessoryWidgetBackground()
-                glyph
-                    .padding(9)
+                glyph.padding(9)
             }
-            .widgetLabel("Templates")
         case .accessoryRectangular:
             HStack(spacing: 6) {
-                glyph
-                    .frame(width: 22, height: 22)
+                glyph.frame(width: 22, height: 22)
                 VStack(alignment: .leading, spacing: 1) {
                     Text("Move Forward")
                         .font(.headline)
@@ -57,18 +57,18 @@ struct ChooserComplicationView: View {
                 }
             }
         case .accessoryInline:
-            // Inline complications only render SF Symbols alongside their text.
+            // Inline complications only render SF Symbols beside their text.
             Label("Move Forward", systemImage: "chevron.forward.circle")
         case .accessoryCorner:
             glyph
-                .padding(4)
+                .padding(3)
                 .widgetLabel("Move Forward")
         default:
             glyph
         }
     }
 
-    /// The app icon's mark, supplied as a template image so the watch face tints it.
+    /// The app icon's mark, shipped as a template image so the watch face tints it.
     private var glyph: some View {
         Image("ComplicationGlyph")
             .resizable()
@@ -79,8 +79,8 @@ struct ChooserComplicationView: View {
 }
 
 @main
-struct MoveForwardWatchWidgetsBundle: WidgetBundle {
+struct MoveForwardWatchWidgetBundle: WidgetBundle {
     var body: some Widget {
-        MoveForwardWatchWidgets()
+        ChooserComplicationWidget()
     }
 }

@@ -37,7 +37,10 @@ Use a paired iPhone and Apple Watch. These checks cannot be completed in this Li
 
 ## Quick launch
 
-1. Complication: opens the template chooser; does not auto-start.
+1. Complication: opens the template chooser; does not auto-start. After installing a
+   new build, remove the complication from the watch face and add it again so watchOS
+   reloads its artwork. A grey exclamation placeholder means the widget extension did
+   not load, not that the glyph is wrong.
 2. Siri / Shortcuts: “Choose a visit in Move Forward” opens the chooser.
 3. Action Button on compatible watches: assign the shortcut and confirm it opens the chooser.
 
